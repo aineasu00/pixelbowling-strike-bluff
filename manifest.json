@@ -1,0 +1,10 @@
+{
+  "name":"Strike & Bluff — Pixel Bowling",
+  "short_name":"Strike & Bluff",
+  "start_url":"./",
+  "display":"standalone",
+  "orientation":"landscape",
+  "background_color":"#0A0A0A",
+  "theme_color":"#0A0A0A",
+  "description":"Jeu de bluff collectif pass-and-play pour Pixel Bowling"
+}

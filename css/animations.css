@@ -1,0 +1,8 @@
+@keyframes staticIn{0%{filter:brightness(2) contrast(2);opacity:.3;transform:scaleY(.02)}35%{transform:scaleY(1)}100%{filter:none;opacity:1}}
+@keyframes pulseGold{50%{box-shadow:0 0 38px rgba(212,175,55,.8);border-color:#fff0a0}}
+@keyframes pulseRed{50%{box-shadow:0 0 42px rgba(120,0,0,1),inset -8px -10px 18px #180000}}
+@keyframes neonFlicker{0%,18%,22%,62%,100%{opacity:1}20%,60%{opacity:.72}}
+@keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(-12px,4px) rotate(-.4deg)}50%{transform:translate(9px,-4px) rotate(.4deg)}75%{transform:translate(-5px,2px)}}
+@keyframes pixelBurst{0%{box-shadow:0 0 0 transparent}50%{box-shadow:-120px -30px 0 -4px #d4af37,100px 50px 0 -5px #b8860b,50px -90px 0 -6px #f5f5dc}100%{box-shadow:-180px -70px 0 -8px transparent,160px 90px 0 -8px transparent}}
+.neon-title{animation:neonFlicker 5s infinite}.active-banner{animation:pulseGold 2s infinite}.bluff-btn{animation:pulseRed 1.4s infinite}.shake{animation:shake .15s 3}.pixel-burst:after{content:"";position:fixed;width:8px;height:8px;left:50%;top:50%;animation:pixelBurst .7s ease-out}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important}}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Strike & Bluff — jeu de bluff collectif Pixel Bowling">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <title>Strike & Bluff — Pixel Bowling</title>
+</head>
+<body>
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <main id="app" aria-live="polite">
+    <section id="home-screen" class="screen active">
+      <div class="hero-emblem" aria-hidden="true"><span>●</span><i>♛</i><span>◆</span></div>
+      <p class="eyebrow">PIXEL BOWLING PRÉSENTE</p>
+      <h1 class="neon-title">STRIKE <b>&</b> BLUFF</h1>
+      <p class="subtitle">LE SALON PRIVÉ DU MENSONGE</p>
+      <nav class="terminal-menu frame">
+        <button data-action="new-game"><span>01</span> LIAR BAR</button>
+        <button data-action="resume" id="resume-btn" hidden><span>02</span> REPRENDRE</button>
+        <button data-action="options"><span>03</span> OPTIONS</button>
+        <button data-action="credits"><span>04</span> CRÉDITS</button>
+      </nav>
+      <p class="kiosk-note">TABLE COLLECTIVE · 2–9 JOUEURS · TOUT EST PUBLIC</p>
+    </section>
+
+    <section id="setup-screen" class="screen">
+      <header class="screen-head">
+        <button class="back-btn" data-action="home" aria-label="Retour">‹</button>
+        <div><p class="eyebrow">REGISTRE D’OR</p><h2>LES JOUEURS</h2></div>
+        <div class="player-counter"><b id="player-count">2</b><span>/ 9</span></div>
+      </header>
+      <div class="setup-body frame">
+        <div id="player-inputs" class="player-inputs"></div>
+        <div class="setup-actions">
+          <button class="metal-btn" data-action="add-player">+ JOUEUR</button>
+          <button class="primary-btn" data-action="start-game">OUVRIR LE SALON</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="game-screen" class="screen">
+      <header class="score-header">
+        <div class="brand-mini">S&B</div>
+        <div id="scoreboard" class="scoreboard"></div>
+        <button class="icon-btn" data-action="pause" aria-label="Menu">☰</button>
+      </header>
+      <div id="active-banner" class="active-banner">
+        <span>À TOI</span><strong id="active-name">JOUEUR</strong>
+        <small id="turn-instruction">CHOISIS TES CARTES</small>
+      </div>
+      <div class="game-layout">
+        <aside id="players-left" class="player-rail"></aside>
+        <section class="lane-table frame">
+          <div class="target-display">
+            <small>VALEUR CIBLE</small>
+            <strong id="target-value">—</strong>
+            <button id="change-target-btn" class="tiny-btn" data-action="change-target" hidden>CHANGER</button>
+          </div>
+          <div id="played-pile" class="played-pile" aria-label="Cartes posées">
+            <p id="pile-empty">LA TABLE ATTEND</p>
+          </div>
+          <button id="bluff-btn" class="bluff-btn" data-action="bluff">
+            <span>BLUFF !</span><small>ACCUSER</small>
+          </button>
+          <div class="table-actions">
+            <button class="pass-btn" data-action="pass">PASSER</button>
+            <button id="play-btn" class="play-btn" data-action="play" disabled>POSER <b id="selection-count">0</b></button>
+          </div>
+          <div id="last-play" class="last-play">AUCUN COUP</div>
+        </section>
+        <aside id="players-right" class="player-rail"></aside>
+      </div>
+      <section class="public-hand">
+        <div class="hand-label"><span>MAIN PUBLIQUE</span><b id="hand-owner"></b></div>
+        <div id="hand-cards" class="hand-cards"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="target-modal" class="overlay" hidden>
+    <div class="modal frame">
+      <p class="eyebrow">LE MENEUR DÉCLARE</p>
+      <h2>CHOISISSEZ LA CIBLE</h2>
+      <div id="target-grid" class="target-grid"></div>
+    </div>
+  </div>
+
+  <div id="accuser-modal" class="overlay" hidden>
+    <div class="modal frame">
+      <p class="eyebrow">QUI CRIE BLUFF ?</p>
+      <h2>CHOISISSEZ L’ACCUSATEUR</h2>
+      <div id="accuser-grid" class="accuser-grid"></div>
+      <button class="metal-btn" data-action="close-accuser">ANNULER</button>
+    </div>
+  </div>
+
+  <div id="reveal-overlay" class="overlay reveal-overlay" hidden>
+    <div class="reveal-content">
+      <h2>BLUFF !</h2>
+      <p id="reveal-verdict"></p>
+      <div id="reveal-cards" class="reveal-cards"></div>
+    </div>
+  </div>
+
+  <div id="penalty-overlay" class="overlay penalty-overlay" hidden>
+    <div class="penalty-card frame">
+      <div id="penalty-icon" class="penalty-icon">◆</div>
+      <p class="eyebrow">CARTE PÉNALITÉ</p>
+      <h2 id="penalty-player">JOUEUR</h2>
+      <p id="penalty-text"></p>
+      <button class="primary-btn" data-action="penalty-done">C’EST FAIT</button>
+    </div>
+  </div>
+
+  <div id="round-overlay" class="overlay" hidden>
+    <div class="modal frame">
+      <p class="eyebrow">MANCHE TERMINÉE</p>
+      <h2 id="round-winner"></h2>
+      <p id="round-score"></p>
+      <button class="primary-btn" data-action="next-round">MANCHE SUIVANTE</button>
+    </div>
+  </div>
+
+  <div id="info-overlay" class="overlay" hidden>
+    <div class="modal frame info-modal">
+      <button class="modal-close" data-action="close-info">×</button>
+      <h2 id="info-title"></h2>
+      <div id="info-copy"></div>
+    </div>
+  </div>
+
+  <script src="js/cards.js"></script>
+  <script src="js/liarbar.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

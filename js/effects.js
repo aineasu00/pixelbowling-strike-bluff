@@ -1,0 +1,9 @@
+(function(){
+  window.PB_EFFECTS={
+    reveal(ok){
+      document.body.classList.add("shake",ok?"pixel-burst":"");
+      setTimeout(()=>document.body.classList.remove("shake","pixel-burst"),800);
+    },
+    transition(){document.body.classList.add("shake");setTimeout(()=>document.body.classList.remove("shake"),320)}
+  };
+})();
