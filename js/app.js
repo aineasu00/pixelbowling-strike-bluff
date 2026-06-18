@@ -40,7 +40,7 @@
   function info(type){
     const options=type==="options";
     $("#info-title").textContent=options?"OPTIONS":"CRÉDITS";
-    $("#info-copy").innerHTML=options?`<p>Le jeu est muet par défaut et fonctionne sans compte. La partie est sauvegardée automatiquement sur cette tablette.</p><button class="metal-btn" data-action="clear-save">EFFACER LA SAUVEGARDE</button>`:`<p><b>Strike & Bluff</b><br>Une création Pixel Bowling.</p><p>Direction : old money industriel × low-poly fin 90s.<br>Jeu local collectif, sans données privées.</p>`;
+    $("#info-copy").innerHTML=options?`<p>Le jeu est muet par défaut et fonctionne sans compte. La partie est sauvegardée automatiquement sur cette tablette.</p><button class="metal-btn" data-action="clear-save">EFFACER LA SAUVEGARDE</button>`:`<p><b>Strike & Bluff</b><br>Le salon privé du mensonge.</p><p>Direction : old money industriel × low-poly fin 90s.<br>Jeu local collectif, sans données privées.</p>`;
     $("#info-overlay").hidden=false;
   }
   document.addEventListener("click",e=>{

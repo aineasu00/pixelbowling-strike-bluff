@@ -1,6 +1,6 @@
 # Strike & Bluff
 
-Jeu de cartes collectif pass-and-play pour tablette, conçu pour Pixel Bowling. Toutes les cartes et informations sont publiques : le bluff repose sur la déclaration orale.
+Jeu de cartes collectif pass-and-play pour tablette. Toutes les cartes et informations sont publiques : le bluff repose sur la déclaration orale.
 
 ## Jouer
 
