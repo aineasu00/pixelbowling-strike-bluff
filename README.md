@@ -23,6 +23,8 @@ Puis ouvrir `http://localhost:8000`.
 
 - HTML5 / CSS3 / JavaScript ES6 vanilla
 - 60 cartes : 52 standards, 4 Jokers, 4 Kingpins
+- deck reconstruit puis mélangé par Fisher-Yates à chaque manche
+- écran de règles complet accessible depuis l’accueil
 - sauvegarde automatique `localStorage`
 - service worker offline
 - aucun backend, framework, canvas, WebGL ou appel API

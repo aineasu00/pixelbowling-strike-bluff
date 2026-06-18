@@ -1,6 +1,6 @@
 (function(){
   const game=new LiarBar(),$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-  const screens={home:$("#home-screen"),setup:$("#setup-screen"),game:$("#game-screen")};
+  const screens={home:$("#home-screen"),rules:$("#rules-screen"),setup:$("#setup-screen"),game:$("#game-screen")};
   const roman=v=>(PB_CARDS.ranks.find(r=>r.v===v)||{r:v}).r;
   let privatePage=0;
 
@@ -107,6 +107,7 @@
     if(!a)return;
     const action=a.dataset.action;
     if(action==="new-game")openSetup();
+    if(action==="rules")show("rules");
     if(action==="resume"){game.load();render()}
     if(action==="home")show("home");
     if(action==="add-player"){const values=$$("#player-inputs input").map(i=>i.value);if(values.length<9){values.push(`JOUEUR ${values.length+1}`);setupInputs(values)}}
@@ -123,14 +124,14 @@
     if(action==="penalty-done"){const winner=game.finishPenalty();$("#penalty-overlay").hidden=true;if(winner)showRound(winner);else render()}
     if(action==="next-round"){if(game.state.status==="gameOver"){game.clear();show("home")}else{game.nextRound();$("#round-overlay").hidden=true;render()}}
     if(action==="pause")show("home");
-    if(action==="options"||action==="credits")info(action);
+    if(action==="credits")info(action);
     if(action==="close-info")$("#info-overlay").hidden=true;
     if(action==="clear-save"){game.clear();$("#resume-btn").hidden=true;$("#info-overlay").hidden=true}
   });
 
   function showReveal(result){
     const s=game.state,lp=s.lastPlay;
-    $("#reveal-verdict").textContent=result.lied?`${s.players[lp.playerId].name} A MENTI.`:`${s.players[lp.playerId].name} DISAIT VRAI.`;
+    $("#reveal-verdict").textContent=result.lied?`MENTEUR ! — ${s.players[lp.playerId].name}`:`INNOCENT ! — ${s.players[lp.playerId].name}`;
     $("#reveal-cards").innerHTML=lp.cards.map((c,i)=>`<div class="flip-card" style="--delay:${i*.12}s"><div class="flip-inner"><div class="flip-back">${cardBackHTML(2)}</div><div class="flip-face">${cardHTML(c)}</div></div></div>`).join("");
     $("#reveal-overlay").hidden=false;
     PB_EFFECTS.reveal(result.lied);

@@ -1,6 +1,10 @@
 (function(){
   const penalties=[
-    ["◆","Lance la prochaine boule de la main non dominante."],
+    ["🎳","Fais un lancer granny entre les jambes, depuis une position stable."],
+    ["♬","Chante un refrain avant ton prochain lancer."],
+    ["◉","Pose les yeux bandés avec un guide, puis retire le bandeau avant de lancer."],
+    ["↻","Fais un spin 360° loin de la zone de lancer."],
+    ["♟","Mime un poirier sans renversement ni appui sur la tête."],
     ["♟","Fais ta prochaine approche au ralenti, façon film noir."],
     ["●","Joue une boule sans prendre d’élan."],
     ["♛","Salue la piste comme un monarque avant ton lancer."],
@@ -20,7 +24,7 @@
       this.deal();this.save();return this.state
     }
     deal(){
-      const deck=shuffle(PB_CARDS.cards.map(c=>({...c,uid:`${c.id}-${Math.random().toString(36).slice(2,7)}`})));
+      const deck=shuffle(PB_CARDS.createDeck().map(c=>({...c,uid:`${c.id}-${globalThis.crypto?.randomUUID?.()||Math.random().toString(36).slice(2)}`})));
       this.state.players.forEach(p=>p.hand=[]);
       let i=0;while(deck.length)this.state.players[i++%this.state.players.length].hand.push(deck.pop());
       this.state.players.forEach(p=>p.hand.sort((a,b)=>a.order-b.order));

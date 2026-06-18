@@ -19,14 +19,66 @@
       <div class="hero-emblem" aria-hidden="true"><span>●</span><i>♛</i><span>◆</span></div>
       <p class="eyebrow">LE SALON PRIVÉ PRÉSENTE</p>
       <h1 class="neon-title">STRIKE <b>&</b> BLUFF</h1>
-      <p class="subtitle">LE SALON PRIVÉ DU MENSONGE</p>
+      <p class="subtitle">LIAR BAR BOWLING</p>
       <nav class="terminal-menu frame">
-        <button data-action="new-game"><span>01</span> LIAR BAR</button>
+        <button data-action="new-game"><span>01</span> START</button>
         <button data-action="resume" id="resume-btn" hidden><span>02</span> REPRENDRE</button>
-        <button data-action="options"><span>03</span> OPTIONS</button>
+        <button data-action="rules"><span>03</span> RÈGLES</button>
         <button data-action="credits"><span>04</span> CRÉDITS</button>
       </nav>
       <p class="kiosk-note">TABLE COLLECTIVE · 2–9 JOUEURS · BLUFF ORAL</p>
+    </section>
+
+    <section id="rules-screen" class="screen rules-screen">
+      <header class="screen-head rules-head">
+        <button class="back-btn" data-action="home" aria-label="Retour au menu">‹</button>
+        <div><p class="eyebrow">DOSSIER CONFIDENTIEL</p><h2>RÈGLES DU LIAR BAR</h2></div>
+        <div class="rules-mark">S&B</div>
+      </header>
+      <article class="rules-book frame">
+        <section>
+          <h3>01 · OBJECTIF</h3>
+          <p>Débarrassez-vous de toutes vos cartes avant les autres. Le premier joueur sans carte gagne la manche. Trois manches gagnées donnent la victoire finale.</p>
+        </section>
+        <section>
+          <h3>02 · LE DECK</h3>
+          <p>Chaque manche utilise un nouveau deck de 60 cartes mélangé par Fisher-Yates : 52 standards, 4 Jokers et 4 Kingpins.</p>
+          <div class="rules-grid suits-guide">
+            <p><b>♠ Boules Noires</b><span>Force et précision.</span></p>
+            <p><b>♥ Quilles Blanches</b><span>Élégance de la piste.</span></p>
+            <p><b>♦ Gants Rouges</b><span>Audace et contrôle.</span></p>
+            <p><b>♣ Chaussures Vertes</b><span>Équilibre et approche.</span></p>
+          </div>
+          <p><b>Joker ☠</b> : peut être annoncé comme n’importe quelle valeur, mais sa révélation déclenche automatiquement une pénalité. <b>Kingpin ♛</b> : change immédiatement la valeur cible.</p>
+        </section>
+        <section>
+          <h3>03 · DÉROULEMENT</h3>
+          <ol>
+            <li>Le meneur choisit une valeur cible, puis l’annonce au groupe.</li>
+            <li>Le joueur actif ouvre brièvement sa main privée pendant que les autres détournent le regard.</li>
+            <li>Il sélectionne 1 à 3 cartes, annonce oralement leur nombre et prétend qu’elles correspondent à la cible.</li>
+            <li>Après validation, les cartes rejoignent la table face cachée. Personne ne voit leur valeur.</li>
+            <li>Le joueur peut passer. N’importe quel autre joueur peut accuser le dernier poseur avec <b>BLUFF !</b></li>
+            <li>Les dernières cartes sont révélées pendant 3 secondes. Si le poseur mentait, il prend la pénalité. S’il disait vrai, l’accusateur la prend.</li>
+          </ol>
+        </section>
+        <section>
+          <h3>04 · PÉNALITÉS POSSIBLES</h3>
+          <div class="rules-grid penalties-guide">
+            <p>🎳 Lancer granny entre les jambes.</p>
+            <p>♬ Chanter avant le prochain lancer.</p>
+            <p>◉ Poser les yeux bandés, accompagné, puis retirer le bandeau avant de lancer.</p>
+            <p>↻ Faire un spin 360° loin de la zone de lancer.</p>
+            <p>♟ Mimer un poirier sans renversement ni appui sur la tête.</p>
+            <p>🎙 Commenter son lancer comme une finale mondiale.</p>
+          </div>
+        </section>
+        <section>
+          <h3>05 · STRATÉGIE</h3>
+          <p>Variez le nombre de cartes annoncées, observez les hésitations, conservez un Kingpin pour casser un rythme prévisible et n’accusez pas seulement sur l’intuition : une accusation fausse vous coûte la pénalité.</p>
+        </section>
+        <footer><button class="primary-btn" data-action="home">RETOUR AU MENU</button></footer>
+      </article>
     </section>
 
     <section id="setup-screen" class="screen">
