@@ -42,7 +42,7 @@
     accuse(accuserId){
       if(!this.state.lastPlay)return null;
       const lp=this.state.lastPlay;
-      const lied=lp.kingpin?false:lp.cards.some(c=>c.type==="joker"||c.rank!==this.state.target);
+      const lied=lp.kingpin?false:lp.cards.some(c=>c.type==="joker"||c.rank!==lp.claimed);
       const penalized=lied?lp.playerId:accuserId;
       const penalty=penalties[Math.floor(Math.random()*penalties.length)];
       this.state.pendingPenalty={playerId:penalized,penalty,lied,accuserId,accusedId:lp.playerId};

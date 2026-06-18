@@ -1,14 +1,14 @@
 # Strike & Bluff
 
-Jeu de cartes collectif pass-and-play pour tablette. Toutes les cartes et informations sont publiques : le bluff repose sur la déclaration orale.
+Jeu de cartes collectif pass-and-play pour tablette. Les mains ne sont visibles que pendant une brève phase privée ; toute carte posée rejoint la table face cachée.
 
 ## Jouer
 
 1. Ouvrir `index.html` via un serveur statique.
 2. Ajouter 2 à 9 joueurs.
 3. Le meneur choisit la valeur cible.
-4. À son tour, chaque joueur sélectionne 1 à 3 cartes visibles, annonce oralement qu’elles correspondent à la cible, puis les pose.
-5. N’importe quel autre joueur peut toucher **BLUFF !** et s’identifier comme accusateur.
+4. À son tour, le joueur ouvre sa main privée, sélectionne 1 à 3 cartes, annonce oralement qu’elles correspondent à la cible, puis les pose face cachée.
+5. N’importe quel autre joueur peut toucher **BLUFF !** : les dernières cartes sont révélées pendant 3 secondes.
 6. Le premier joueur à gagner 3 manches remporte la partie.
 
 ## Développement local

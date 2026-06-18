@@ -37,3 +37,49 @@ h1,h2,p{margin-top:0}.film-grain,.scanlines{position:fixed;inset:0;pointer-event
 .reveal-overlay h2{font:900 clamp(72px,11vw,150px) var(--serif);color:#8e1712;text-shadow:0 0 24px #7b0000}.reveal-content{text-align:center}.reveal-content p{font:42px var(--serif)}.reveal-cards{display:flex;gap:18px;justify-content:center}.reveal-cards .card{width:180px;height:260px;flex-basis:180px}.penalty-card{width:min(900px,90vw);padding:45px;text-align:center;background:linear-gradient(#270606,#090505)}.penalty-icon{font-size:96px;color:var(--gold)}.penalty-card h2{font-size:54px;color:var(--gold)}.penalty-card #penalty-text{font-size:clamp(36px,5vw,62px);line-height:1.2}
 @media(max-width:900px){.screen{padding:8px}.game-layout{grid-template-columns:120px 1fr 120px}.lane-table{grid-template-columns:1fr 160px 1fr}.active-banner{height:90px}.active-banner strong{font-size:40px}.score-chip{min-width:70px}.score-chip b{font-size:23px}.public-hand{height:220px}.card{width:112px;height:170px;flex-basis:112px}.card .art{font-size:58px}.player-inputs{grid-template-columns:repeat(2,1fr)}}
 @media(max-height:720px){.score-header{height:68px}.active-banner{height:78px}.active-banner strong{font-size:36px}.active-banner small{font-size:21px}.public-hand{height:190px}.hand-cards{height:160px}.card{width:100px;height:150px;flex-basis:100px}.card .art{font-size:50px;inset:40px 10px 23px}.bluff-btn{width:150px;height:150px}.game-layout{grid-template-columns:115px minmax(500px,1fr) 115px}}
+
+/* Phase de bluff privée et cartes de table toujours face cachée. */
+.private-gate{height:150px;display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,80px);padding:15px 28px;text-align:center}
+.private-gate div span{display:block;font:25px var(--pixel);color:var(--gold)}
+.private-gate div strong{display:block;font:38px var(--pixel)}
+.private-gate p{max-width:360px;margin:0;font:25px var(--pixel);color:#c9bd97}
+.private-gate button{min-width:240px}
+.played-pile .card{width:150px;height:220px;flex-basis:150px;transform:rotate(var(--rot));margin-left:var(--offset)}
+.card-back{background:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 2px,transparent 2px 24px),linear-gradient(100deg,#2b1408,#784416 42%,#3a1d0b 58%,#160b05);color:var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;box-shadow:inset 0 0 0 7px #2a1d0b,inset 0 0 0 10px var(--old-gold),inset 0 0 28px #000,5px 8px 15px #000}
+.card-back:after{content:"";position:absolute;inset:14px;border:2px solid #9a7421;background:linear-gradient(22deg,transparent 48%,rgba(245,245,220,.08) 49%,transparent 50%);pointer-events:none}
+.card-back strong{z-index:2;font:900 23px/1 var(--serif);letter-spacing:.08em;text-shadow:2px 2px #171006}
+.card-back small{z-index:2;font:20px var(--pixel);color:#ead889;margin-top:10px}
+.back-corner{position:absolute;z-index:3;left:13px;top:11px;font-size:20px}
+.private-overlay{background:radial-gradient(circle at 50% 65%,rgba(74,0,0,.3),rgba(0,0,0,.97) 65%)}
+.private-panel{width:96vw;height:94vh;padding:24px;display:flex;flex-direction:column}
+.private-panel header{display:flex;align-items:center;justify-content:space-between;text-align:left}
+.private-panel h2{font-size:clamp(42px,4vw,64px);margin:4px 0}
+.privacy-seal{border:3px double var(--gold);padding:12px;text-align:center;font:27px var(--pixel);color:var(--gold);transform:rotate(2deg)}
+.private-hand-cards{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:18px}
+.private-hand-cards .card{width:200px;height:300px;flex-basis:200px}
+.private-hand-cards .card .rank{font-size:48px}
+.private-hand-cards .card .suit{top:60px;font-size:34px}
+.private-hand-cards .card .art{font-size:96px}
+.private-hand-cards .card .maker{font-size:24px}
+.private-pagination{height:80px;display:flex;align-items:center;justify-content:center;gap:24px;font:30px var(--pixel)}
+.private-pagination button{min-width:120px}
+.private-panel footer{display:flex;justify-content:center;gap:18px}
+.private-panel footer button{min-width:200px}
+.kingpin-btn{border:3px solid var(--gold);background:#181106;color:var(--gold);font:28px var(--pixel)}
+.flip-card{width:180px;height:260px;perspective:1000px}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:cardFlip .8s var(--delay) both}
+.flip-back,.flip-face{position:absolute;inset:0;backface-visibility:hidden}
+.flip-back .card,.flip-face .card{width:180px;height:260px}
+.flip-face{transform:rotateY(180deg)}
+@media(max-width:1000px){
+  .private-gate{height:130px}.private-gate p{display:none}
+  .private-hand-cards .card{width:150px;height:220px;flex-basis:150px}
+  .private-hand-cards .card .art{font-size:70px}
+}
+@media(max-height:720px){
+  .private-gate{height:115px}.private-panel{padding:12px}.private-panel h2{font-size:38px}
+  .private-hand-cards .card{width:150px;height:220px;flex-basis:150px}.private-pagination{height:65px}
+}
+.card .maker,.card-back strong,.card-back small,.bluff-btn small{font-size:24px}
+.back-btn,.icon-btn,.remove-player,.modal-close,.tiny-btn{min-width:120px;min-height:80px}
+@media(max-width:900px){.score-chip b,.active-banner small{font-size:24px}}

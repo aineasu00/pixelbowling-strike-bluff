@@ -26,7 +26,7 @@
         <button data-action="options"><span>03</span> OPTIONS</button>
         <button data-action="credits"><span>04</span> CRÉDITS</button>
       </nav>
-      <p class="kiosk-note">TABLE COLLECTIVE · 2–9 JOUEURS · TOUT EST PUBLIC</p>
+      <p class="kiosk-note">TABLE COLLECTIVE · 2–9 JOUEURS · BLUFF ORAL</p>
     </section>
 
     <section id="setup-screen" class="screen">
@@ -70,15 +70,18 @@
           </button>
           <div class="table-actions">
             <button class="pass-btn" data-action="pass">PASSER</button>
-            <button id="play-btn" class="play-btn" data-action="play" disabled>POSER <b id="selection-count">0</b></button>
           </div>
           <div id="last-play" class="last-play">AUCUN COUP</div>
         </section>
         <aside id="players-right" class="player-rail"></aside>
       </div>
-      <section class="public-hand">
-        <div class="hand-label"><span>MAIN PUBLIQUE</span><b id="hand-owner"></b></div>
-        <div id="hand-cards" class="hand-cards"></div>
+      <section class="private-gate frame">
+        <div>
+          <span>MAIN DE <b id="hand-owner"></b></span>
+          <strong><b id="active-card-count">0</b> CARTES</strong>
+        </div>
+        <p>Les autres joueurs détournent le regard.</p>
+        <button id="open-hand-btn" class="primary-btn" data-action="open-hand">VOIR MA MAIN</button>
       </section>
     </section>
   </main>
@@ -88,6 +91,31 @@
       <p class="eyebrow">LE MENEUR DÉCLARE</p>
       <h2>CHOISISSEZ LA CIBLE</h2>
       <div id="target-grid" class="target-grid"></div>
+    </div>
+  </div>
+
+  <div id="private-overlay" class="overlay private-overlay" hidden>
+    <div class="private-panel frame">
+      <header>
+        <div>
+          <p class="eyebrow">PHASE PRIVÉE TEMPORAIRE</p>
+          <h2><span id="private-player"></span>, CHOISIS 1 À 3 CARTES</h2>
+        </div>
+        <div class="privacy-seal">REGARDS<br>DÉTOURNÉS</div>
+      </header>
+      <div id="private-hand-cards" class="private-hand-cards"></div>
+      <div class="private-pagination">
+        <button class="metal-btn" data-action="hand-prev">‹</button>
+        <span id="hand-page">PAGE 1 / 1</span>
+        <button class="metal-btn" data-action="hand-next">›</button>
+      </div>
+      <footer>
+        <button class="metal-btn" data-action="close-hand">ANNULER</button>
+        <button id="private-kingpin-btn" class="kingpin-btn" data-action="private-kingpin" hidden>JOUER KINGPIN</button>
+        <button id="private-play-btn" class="play-btn" data-action="private-play" disabled>
+          POSER FACE CACHÉE · <b id="private-selection-count">0</b>
+        </button>
+      </footer>
     </div>
   </div>
 
